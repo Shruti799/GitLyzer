@@ -1,4 +1,4 @@
-body {
+* body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
@@ -45,4 +45,5 @@ button:hover {
 #charts img {
     width: 100%;
     margin: 10px 0;
-}
+} 
+

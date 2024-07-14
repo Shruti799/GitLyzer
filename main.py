@@ -67,17 +67,28 @@ def generate_charts(username):
 
 
 @app.route('/')
-def index():
+def base():
+    return render_template('base.html')
+
+@app.route('/index.html')
+def index_html():
     return render_template('index.html')
+
 
 @app.route('/analyze', methods=['GET'])
 def analyze():
     username = request.args.get('username')
-    if username:
+    if not username:
+        return jsonify({'error': 'Invalid username'}), 400
+    try:
         charts = generate_charts(username)
         return jsonify({'charts': charts})
-    else:
-        return jsonify({'error': 'Invalid username'}), 400
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': f'Error fetching data from GitHub: {str(e)}'}), 500
+    except Exception as e:
+        return jsonify({'error': f'Internal server error: {str(e)}'}), 500
+
 
 if __name__ == "__main__":
     app.run(debug=True)
+

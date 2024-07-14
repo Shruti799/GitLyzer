@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #000;
+    padding: 50px 0;
+    color: #fff;
+}
+
+.header-container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 70px;
+    font-style: normal;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    margin-left: -30px;
+    margin-top: -10px;
+}
+
+header h1::first-letter {
+    font-size: 170px; 
+}
+
+.github-logo {
+    width: 170px; 
+    height: 170px;
+    margin-left: 510px; 
+}
+
+
+h1 {
+    text-align: center; 
+    color: white;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto; 
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 100px 1px; 
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.left-content {
+    width: 60%; 
+    margin-right: 30px;
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.right-content {
+    width: 40%; 
+    text-align: right;
+    margin-right: 40px;
+}
+
+.right-content p {
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.try-button {
+    display: inline-block;
+    padding: 12px 23px;
+    background-color: rgb(14, 175, 211);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.try-button:hover {
+    background-color: rgb(49, 206, 241);
+}
+
+.try-text {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 14px; 
+    margin-right: -17px;
+
+}
