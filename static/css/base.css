@@ -100,3 +100,41 @@ h1 {
     margin-right: -17px;
 
 }
+
+footer {
+    color: black;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer0 {
+    white-space: nowrap;
+    margin-bottom: -41px; 
+    margin-left: 20px;
+}
+
+.footer1 {
+    white-space: nowrap;
+    margin-bottom: 14px; 
+}
+
+.twitter-logo {
+    width: 24px;
+    height: auto;
+    margin-right: -3px;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: #1DA1F2;
+}
