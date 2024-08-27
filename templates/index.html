@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,19 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub Analyzer</title>
     <link rel="stylesheet" href="/static/css/style.css">
-    
-
 </head>
 <body>
-    <div class="container">
+
+    <header>
+        <div class="header-container">
+            <a href="{{ url_for('base') }}" class="home-link">
+                <img src="/static/images/home-icon.png" alt="Home" class="home-icon"> HOME
+            </a>
+        </div>
+    </header>
+
+    <div class="search-section">
         <h1>GitHub Analyzer</h1>
         <input type="text" id="username" placeholder="Enter GitHub username">
         <button onclick="analyze()">Analyze</button>
-        <div id="charts"></div>
     </div>
+    
+    <div id="charts">
+    </div>
+
+    <!-- <div id="repo_table">
+    </div> -->
+    
+
     <script src="/static/js/script.js"></script>
 </body>
 </html>
+
 
 
 

@@ -26,18 +26,25 @@ def process_repos_data(repos_data):
 
 
 
-def plot_and_save(data, title, xlabel, ylabel, filename):
-
+def plot_and_save(data, title, xlabel, ylabel, filename, chart_type='line'):
     os.makedirs('static/images', exist_ok=True)
     plt.figure(figsize=(10, 5))
-    data.plot(kind='bar')
-    plt.title(title)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.xticks(rotation=90)
+    
+    if chart_type == 'pie':
+        data.plot(kind='pie', autopct='%1.1f%%')
+        plt.title(title, fontsize=20, fontweight='bold')
+        plt.ylabel('')  # Hide the y-label for pie charts
+    else:
+        data.plot(kind=chart_type)
+        plt.title(title, fontsize=20, fontweight='bold')
+        plt.xlabel(xlabel)
+        plt.ylabel(ylabel)
+        plt.xticks(rotation=35, ha='right')
+    
     plt.savefig(os.path.join('static/images', f'{filename}.png'))
     plt.close()
     return f'/static/images/{filename}.png'
+
 
 
 
@@ -46,6 +53,12 @@ def generate_charts(username):
     repos_df = process_repos_data(repos_data)
     
     charts = []
+
+    # Languages used in repositories
+    languages = repos_df['language'].value_counts()
+    languages_chart = plot_and_save(languages, 'Languages Used', '', '', 'languages', 'pie')
+    charts.append(languages_chart)
+
     # Number of stars per repository
     stars_chart = plot_and_save(repos_df.set_index('name')['stargazers_count'], 'Stars per Repository', 'Repository', 'Stars', 'stars')
     charts.append(stars_chart)
@@ -58,12 +71,24 @@ def generate_charts(username):
     issues_chart = plot_and_save(repos_df.set_index('name')['open_issues_count'], 'Open Issues per Repository', 'Repository', 'Open Issues', 'issues')
     charts.append(issues_chart)
     
-    # Languages used in repositories
-    languages = repos_df['language'].value_counts()
-    languages_chart = plot_and_save(languages, 'Languages Used', 'Language', 'Count', 'languages')
-    charts.append(languages_chart)
     
     return charts
+
+
+def generate_table(username):
+    _, repos_data = fetch_user_data(username)
+    repos_df = process_repos_data(repos_data)
+    
+    # Create HTML table
+    table_html = '<table class="table table-bordered"><thead><tr><th>Repository Name</th><th>Commits</th><th>Forks</th><th>Stars</th></tr></thead><tbody>'
+    
+    for _, row in repos_df.iterrows():
+        table_html += f'<tr><td>{row["name"]}</td><td>{row["commits_count"]}</td><td>{row["forks_count"]}</td><td>{row["stargazers_count"]}</td></tr>'
+    
+    table_html += '</tbody></table>'
+    
+    return table_html
+
 
 
 @app.route('/')
@@ -82,12 +107,15 @@ def analyze():
         return jsonify({'error': 'Invalid username'}), 400
     try:
         charts = generate_charts(username)
+        #table_html = generate_table(username)
+
         return jsonify({'charts': charts})
+    
     except requests.exceptions.RequestException as e:
         return jsonify({'error': f'Error fetching data from GitHub: {str(e)}'}), 500
     except Exception as e:
         return jsonify({'error': f'Internal server error: {str(e)}'}), 500
-
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
