@@ -40,7 +40,7 @@ torch==2.2.0        # Changed to CPU-only version
 torchaudio==2.2.0   # Changed to CPU-only version
 torchvision==0.17.0 # Changed to CPU-only version
 tqdm==4.66.1
-typing_extensions==4.5.0
+#typing_extensions==4.5.0
 tzdata==2024.1
 urllib3==1.26.13
 Werkzeug==3.0.3
