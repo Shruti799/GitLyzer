@@ -36,9 +36,9 @@ soupsieve==2.3.2.post1
 sympy==1.12
 tenacity==9.0.0
 threadpoolctl==3.2.0
-torch==2.0.1+cu117
-torchaudio==2.0.2+cu117
-torchvision==0.15.2+cu117
+torch==2.0.1        # Changed to CPU-only version
+torchaudio==2.0.2   # Changed to CPU-only version
+torchvision==0.15.2 # Changed to CPU-only version
 tqdm==4.66.1
 typing_extensions==4.4.0
 tzdata==2024.1
