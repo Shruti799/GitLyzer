@@ -1,6 +1,5 @@
 beautifulsoup4==4.12.0
 blinker==1.8.2
-bs4==0.0.1
 certifi==2023.11.17
 charset-normalizer==2.1.1
 click==8.1.7
@@ -36,9 +35,9 @@ soupsieve==2.3.2.post1
 sympy==1.12
 tenacity==9.0.0
 threadpoolctl==3.2.0
-torch==2.2.0        # Changed to CPU-only version
-torchaudio==2.2.0   # Changed to CPU-only version
-torchvision==0.17.0 # Changed to CPU-only version
+torch==2.2.0+cpu
+torchaudio==2.2.0+cpu
+torchvision==0.17.0+cpu
 tqdm==4.66.1
 typing_extensions==4.12.2
 tzdata==2024.1
