@@ -1,6 +1,7 @@
-beautifulsoup4==4.12.0
+beautifulsoup4==4.11.1
 blinker==1.8.2
-certifi==2023.11.17
+bs4==0.0.1
+certifi==2022.12.7
 charset-normalizer==2.1.1
 click==8.1.7
 colorama==0.4.6
@@ -9,6 +10,7 @@ cycler==0.11.0
 filelock==3.9.0
 Flask==3.0.3
 fonttools==4.42.1
+gunicorn==23.0.0
 idna==3.4
 itsdangerous==2.2.0
 Jinja2==3.1.2
@@ -35,11 +37,11 @@ soupsieve==2.3.2.post1
 sympy==1.12
 tenacity==9.0.0
 threadpoolctl==3.2.0
-torch==2.2.0+cpu
-torchaudio==2.2.0+cpu
-torchvision==0.17.0+cpu
+torch==2.0.1+cu117
+torchaudio==2.0.2+cu117
+torchvision==0.15.2+cu117
 tqdm==4.66.1
-typing_extensions==4.12.2
+typing_extensions==4.4.0
 tzdata==2024.1
 urllib3==1.26.13
 Werkzeug==3.0.3
